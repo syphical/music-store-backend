@@ -2,9 +2,7 @@ package com.lutetia.lutetiawebshop.controllers;
 
 import com.lutetia.lutetiawebshop.dao.ArtistDAO;
 import com.lutetia.lutetiawebshop.dto.ArtistDTO;
-import com.lutetia.lutetiawebshop.dto.CategoryDTO;
 import com.lutetia.lutetiawebshop.models.Artist;
-import com.lutetia.lutetiawebshop.models.Category;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/artists")
 public class ArtistController {
     private ArtistDAO artistDAO;
