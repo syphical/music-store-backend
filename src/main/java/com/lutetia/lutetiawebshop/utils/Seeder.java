@@ -14,15 +14,13 @@ public class Seeder {
     private GenreRepository genreRepository;
     private CategoryRepository categoryRepository;
     private UserRepository userRepository;
-    private AddressRepository addressRepository;
 
-    public Seeder(ProductRepository productRepository, ArtistRepository artistRepository, GenreRepository genreRepository, CategoryRepository categoryRepository, UserRepository userRepository, AddressRepository addressRepository) {
+    public Seeder(ProductRepository productRepository, ArtistRepository artistRepository, GenreRepository genreRepository, CategoryRepository categoryRepository, UserRepository userRepository) {
         this.productRepository = productRepository;
         this.artistRepository = artistRepository;
         this.genreRepository = genreRepository;
         this.categoryRepository = categoryRepository;
         this.userRepository = userRepository;
-        this.addressRepository = addressRepository;
     }
 
     @EventListener
@@ -55,14 +53,24 @@ public class Seeder {
     private void seedUser() {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-        Address address = new Address("Zernikedreef", "11", "2333CK", "Leiden", "Zuid-Holland");
-        this.addressRepository.save(address);
+        CustomUser testUser = new CustomUser(
+                "jim@mail.com",
+                passwordEncoder.encode("Test123!"),
+                "Jim",
+                "Wiggers",
+                "31623258018",
+                "Zernikedreef",
+                "11",
+                "2318CK",
+                "Leiden",
+                "Zuid-Holland"
+        );
 
-        CustomUser testUser = new CustomUser("Jim", "Wiggers", "jim@mail.com", passwordEncoder.encode("Test123!"));
-        testUser.setAddress(address);
+        CustomUser customUser = new CustomUser(
+                "test@mail.com",
+                passwordEncoder.encode("Test123!")
+        );
 
-
-        CustomUser customUser = new CustomUser("test@mail.com", passwordEncoder.encode("Test123!"));
         userRepository.save(customUser);
         userRepository.save(testUser);
     }

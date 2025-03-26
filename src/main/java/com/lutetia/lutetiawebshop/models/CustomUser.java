@@ -29,19 +29,36 @@ public class CustomUser {
     @Column(name = "role", nullable = false)
     private String role = "ROLE_USER"; // anders ROLE_ADMIN
 
-    @OneToOne
-    @JoinColumn(name = "address_id")
-    private Address address;
+    @Column(name = "street_address", nullable = false)
+    private String streetAddress;
+
+    @Column(name = "house_number", nullable = false)
+    private String houseNumber;
+
+    @Column(name = "zip_code", nullable = false)
+    private String zipcode;
+
+    @Column(name = "city", nullable = false)
+    private String city;
+
+    @Column(name = "province", nullable = false)
+    private String province;
 
     public CustomUser() {
     }
 
-    public CustomUser(String firstName, String lastName, String email, String password) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public CustomUser(String email, String password, String firstName, String lastName, String phoneNumber, String streetAddress, String houseNumber, String zipcode, String city, String province) {
         this.email = email;
         this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
         this.role = "ROLE_USER";
+        this.streetAddress = streetAddress;
+        this.houseNumber = houseNumber;
+        this.zipcode = zipcode;
+        this.city = city;
+        this.province = province;
     }
 
     public CustomUser(String email, String password) {
@@ -50,6 +67,11 @@ public class CustomUser {
         this.role = "ROLE_USER";
         this.firstName = "User";
         this.lastName = "Account";
+        this.streetAddress = "Street Address";
+        this.houseNumber = "HouseNumber";
+        this.zipcode = "ZipCode";
+        this.city = "City";
+        this.province = "Province";
     }
 
     public String getEmail() {
@@ -117,11 +139,43 @@ public class CustomUser {
         this.role = role;
     }
 
-    public Address getAddress() {
-        return address;
+    public String getStreetAddress() {
+        return streetAddress;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setStreetAddress(String streetAddress) {
+        this.streetAddress = streetAddress;
+    }
+
+    public String getHouseNumber() {
+        return houseNumber;
+    }
+
+    public void setHouseNumber(String houseNumber) {
+        this.houseNumber = houseNumber;
+    }
+
+    public String getZipcode() {
+        return zipcode;
+    }
+
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
     }
 }
