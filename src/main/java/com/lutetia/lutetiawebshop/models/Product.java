@@ -1,9 +1,10 @@
 package com.lutetia.lutetiawebshop.models;
 
-import com.fasterxml.jackson.annotation.JsonAlias;
 import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+
+import java.math.BigDecimal;
 
 @Entity
 public class Product {
@@ -14,8 +15,11 @@ public class Product {
     private long id;
 
     private String name;
-    private Double price;
+    private double price;
+
+    @Column(columnDefinition = "TEXT")
     private String description;
+
     private Integer stock;
     private String releaseDate;
 
@@ -37,7 +41,7 @@ public class Product {
     public Product() {
     }
 
-    public Product(String name, Double price, String description, Integer stock, String releaseDate, Artist artist, Genre genre, Category category) {
+    public Product(String name, double price, String description, Integer stock, String releaseDate, Artist artist, Genre genre, Category category) {
         this.name = name;
         this.price = price;
         this.description = description;
@@ -48,7 +52,7 @@ public class Product {
         this.category = category;
     }
 
-    public Product(String name, Double price, Integer stock, String releaseDate, Artist artist, Genre genre, Category category) {
+    public Product(String name, double price, Integer stock, String releaseDate, Artist artist, Genre genre, Category category) {
         this.name = name;
         this.price = price;
         this.stock = stock;
@@ -74,11 +78,11 @@ public class Product {
         this.name = name;
     }
 
-    public Double getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

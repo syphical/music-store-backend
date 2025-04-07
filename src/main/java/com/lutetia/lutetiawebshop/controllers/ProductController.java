@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = {"http://localhost:4200", "http://s1157305.student.inf-hsleiden.nl:17305"})
 @RequestMapping("/products")
 public class ProductController {
     private ProductDAO productDAO;
@@ -39,12 +39,12 @@ public class ProductController {
                 product.getCategory()),
                 HttpStatus.OK);
     }
-//
-//    @PostMapping
-//    public ResponseEntity<String> createProduct(@RequestBody ProductDTO productDTO) {
-//        this.productDAO.createProduct(productDTO);
-//        return ResponseEntity.ok("Product created");
-//    }
+
+    @PostMapping
+    public ResponseEntity<String> createProduct(@RequestBody ProductDTO productDTO) {
+        this.productDAO.createProduct(productDTO);
+        return ResponseEntity.ok("Product created");
+    }
 
     @PutMapping("/{id}")
     public ResponseEntity<String> updateProduct(@PathVariable long id, @RequestBody ProductDTO productDTO) {
