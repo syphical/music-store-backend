@@ -1,4 +1,4 @@
-Springboot backend for a full stack music store, built in 10 weeks while learning typescript, Angular, OOP programming in Java, and springboot.
+Spring Boot backend for a full stack music store, built in 10 weeks while learning typescript, Angular, OOP programming in Java, and Spring Boot.
 
 Frontend repository can be found here: https://github.com/syphical/music-store-frontend
 
